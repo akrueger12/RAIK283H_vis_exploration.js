@@ -32,17 +32,55 @@
     // create an array with nodes
     var nodes = new vis.DataSet([{
       id: 1,
-      label: 'Node 1',
+      label: 'Emily D',
     }, {
       id: 2,
-      label: 'Node 2',
-    }, ]);
+      label: 'Gretl',
+    }, {
+      id: 3,
+      label: 'Justin',
+    }, {
+      id: 4,
+      label: 'Devin',
+    }, {
+      id: 5,
+      label: 'Anna',
+    }, {
+      id: 6,
+      label: 'Sophie',
+    }, {
+      id: 7,
+      label: 'Nicole',
+    }, {
+      id: 8,
+      label: 'Charlie',
+    }, {
+      id: 9,
+      label: 'Nathan',
+    } ]);
 
     // create an array with edges
     var edges = new vis.DataSet([{
+      id: 1,
       from: 1,
       to: 2
-    }, ]);
+    }, {
+      id: 2, 
+      from: 3,
+      to: 4
+    }, {
+      id: 3,
+      from: 5, 
+      to: 6
+    }, {
+      id: 4,
+      from: 5, 
+      to: 7
+    } , {
+      id: 5,
+      from: 8,
+      to: 9
+    }]);
 
     // create a network
     var container = document.getElementById('mynetwork');
@@ -50,12 +88,42 @@
       nodes: nodes,
       edges: edges
     };
-    var options = {};
+    var options = {
+      nodes: {
+        color: {
+          border: 'black',
+          background: 'red',
+        },
+        shape: 'box'
+      }
+    };
     var network = new vis.Network(container, data, options);
+
+    nodes.update({
+      id: 1, 
+      color: {
+        border: 'orange',
+        background: 'yellow',
+        highlight: {
+          border: 'orange',
+          background: 'yellow',
+        },}
+      });
+
+    nodes.update({
+      id: 5, 
+      color: {
+        border: 'orange',
+        background: 'yellow',
+        highlight: {
+          border: 'orange',
+          background: 'yellow',
+        },}
+      });
+
+      console.log(network.getConnectedEdges('1'));
+      
   </script>
-
-
-
 
 </body>
 
